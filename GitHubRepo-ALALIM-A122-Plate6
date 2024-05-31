@@ -10,42 +10,33 @@ public class plate6 {
             System.out.println("Choose a task number (1-8) or 0 to exit:");
             int taskNumber = userInput.nextInt();
             userInput.nextLine(); // CHOICES
-            switch (taskNumber) {
-                case 1:
-                    taskConnectComponents();
-                    break;
-                case 2:
-                    taskListEdges();
-                    break;
-                case 3:
-                    taskCycleCheck();
-                    break;
-                case 4:
-                    taskVertexDegree();
-                    break;
-                case 5:
-                    taskBipartiteCheck();
-                    break;
-                case 6:
-                    taskAdjMatrix();
-                    break;
-                case 7:
-                    taskIncMatrix();
-                    break;
-                case 8:
-                    taskIsomorphicCheck();
-                    break;
-                case 0:
-                    System.exit(0);
-                default:
-                    System.out.println("Invalid choice. Try again.");
+
+            if (taskNumber == 1) {
+                taskConnectComponents();
+            } else if (taskNumber == 2) {
+                taskListEdges();
+            } else if (taskNumber == 3) {
+                taskCycleCheck();
+            } else if (taskNumber == 4) {
+                taskVertexDegree();
+            } else if (taskNumber == 5) {
+                taskBipartiteCheck();
+            } else if (taskNumber == 6) {
+                taskAdjMatrix();
+            } else if (taskNumber == 7) {
+                taskIncMatrix();
+            } else if (taskNumber == 8) {
+                taskIsomorphicCheck();
+            } else if (taskNumber == 0) {
+                System.exit(0);
+            } else {
+                System.out.println("Invalid choice. Try again.");
             }
         }
     }
 
     /*
-     * Task 1: Determine if a graph is connected and find the number of connected
-     * components
+     * Task 1: 
      */
     private static void taskConnectComponents() {
         System.out.println("Enter the total number of vertices:");
@@ -57,7 +48,7 @@ public class plate6 {
         for (int i = 0; i < totalEdges; i++) {
             int u = userInput.nextInt();
             int v = userInput.nextInt();
-            edgeConnections.add(new int[] { u, v });
+            edgeConnections.add(new int[] { (u - 1), (v - 1) });
         }
 
         int numComponents = findComponents(totalVertices, edgeConnections);
@@ -90,7 +81,7 @@ public class plate6 {
         return parentArray[node];
     }
 
-    /* Task 2: List edges from adjacency matrix and count their occurrences */
+    /* Task 2:  */
     private static void taskListEdges() {
         System.out.println("Enter the size of the adjacency matrix:");
         int matrixSize = userInput.nextInt();
@@ -122,7 +113,7 @@ public class plate6 {
         return edgesCountMap;
     }
 
-    /* Task 3: Check if a graph has a cycle */
+    /* Task 3:  */
     private static void taskCycleCheck() {
         System.out.println("Enter the number of vertices:");
         int vertexCount = userInput.nextInt();
@@ -133,7 +124,7 @@ public class plate6 {
         for (int i = 0; i < edgeCount; i++) {
             int u = userInput.nextInt();
             int v = userInput.nextInt();
-            edgeConnections.add(new int[] { u, v });
+            edgeConnections.add(new int[] { (u - 1), (v - 1) });
         }
 
         boolean hasCycle = detectCycle(vertexCount, edgeConnections);
@@ -155,8 +146,8 @@ public class plate6 {
         return false;
     }
 
-    /* Task 4: Output the degree of a vertex */
-    private static void taskVertexDegree() {
+    /* Task 4:  */
+    private static void texDegaskVertree() {
         System.out.println("Enter the number of vertices:");
         int totalVertices = userInput.nextInt();
         System.out.println("Enter the number of edges:");
@@ -166,7 +157,7 @@ public class plate6 {
         for (int i = 0; i < totalEdges; i++) {
             int u = userInput.nextInt();
             int v = userInput.nextInt();
-            edgeConnections.add(new int[] { u, v });
+            edgeConnections.add(new int[] { (u - 1), (v - 1) });
         }
         System.out.println("Enter the vertex to find the degree of:");
         int vertex = userInput.nextInt();
@@ -185,7 +176,7 @@ public class plate6 {
         return degree;
     }
 
-    /* Task 5: Determine if a graph is bipartite */
+    /* Task 5:  */
     private static void taskBipartiteCheck() {
         System.out.println("Enter the number of vertices:");
         int totalVertices = userInput.nextInt();
@@ -196,7 +187,7 @@ public class plate6 {
         for (int i = 0; i < totalEdges; i++) {
             int u = userInput.nextInt();
             int v = userInput.nextInt();
-            edgeConnections.add(new int[] { u, v });
+            edgeConnections.add(new int[] { (u - 1), (v - 1) });
         }
 
         boolean isBipartiteGraph = checkBipartite(totalVertices, edgeConnections);
@@ -247,7 +238,7 @@ public class plate6 {
         return true;
     }
 
-    // Task 6: Create an adjacency matrix from vertex pairs
+    /* Task 6: */
     private static void taskAdjMatrix() {
         System.out.println("Enter the number of vertices:");
         int totalVertices = userInput.nextInt();
@@ -258,7 +249,7 @@ public class plate6 {
         for (int i = 0; i < totalEdges; i++) {
             int u = userInput.nextInt();
             int v = userInput.nextInt();
-            edgeConnections.add(new int[] { u, v });
+            edgeConnections.add(new int[] { (u - 1), (v - 1) });
         }
 
         int[][] adjacencyMatrix = createAdjMatrix(totalVertices, edgeConnections);
@@ -282,7 +273,7 @@ public class plate6 {
         }
     }
 
-    /* Task 7: Construct an incidence matrix from vertex pairs */
+    /* Task 7: */
     private static void taskIncMatrix() {
         System.out.println("Enter the number of vertices:");
         int totalVertices = userInput.nextInt();
@@ -293,7 +284,7 @@ public class plate6 {
         for (int i = 0; i < totalEdges; i++) {
             int u = userInput.nextInt();
             int v = userInput.nextInt();
-            edgeConnections.add(new int[] { u, v });
+            edgeConnections.add(new int[] { (u - 1), (v - 1) });
         }
 
         int[][] incidenceMatrix = createIncMatrix(totalVertices, edgeConnections);
@@ -312,7 +303,7 @@ public class plate6 {
         return incidenceMatrix;
     }
 
-    /* Task 8: Check if two graphs are isomorphic */
+    /* Task 8: */
     private static void taskIsomorphicCheck() {
         System.out.println("Enter the number of vertices:");
         int totalVertices = userInput.nextInt();
@@ -323,7 +314,7 @@ public class plate6 {
         for (int i = 0; i < edgesGraph1; i++) {
             int u = userInput.nextInt();
             int v = userInput.nextInt();
-            edgesList1.add(new int[] { u, v });
+            edgesList1.add(new int[] { (u - 1), (v - 1) });
         }
 
         System.out.println("Enter the number of edges for the second graph:");
@@ -333,7 +324,7 @@ public class plate6 {
         for (int i = 0; i < edgesGraph2; i++) {
             int u = userInput.nextInt();
             int v = userInput.nextInt();
-            edgesList2.add(new int[] { u, v });
+            edgesList2.add(new int[] { (u - 1), (v - 1) });
         }
 
         boolean isIsomorphic = checkIsomorphic(totalVertices, edgesList1, edgesList2);
